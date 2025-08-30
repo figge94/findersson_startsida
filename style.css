@@ -1,33 +1,273 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
+/* Bas */
+html,
 body {
-    background-color: #daebff;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #daebff;
+  color: #202020;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
+/* Startsidan centrerad */
+body.home {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Rubriker */
 h1 {
-    margin: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: 800;
-    color: #202020;
-    text-transform: uppercase;
-    letter-spacing: -2px;
-    font-size: 5vw;
+  margin: 20px;
+  font-weight: 800;
+  color: #202020;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  font-size: 5vw; /* mobilanpassad */
 }
-
 h1 span {
-    display: block;
-    margin: 11px 0 17px 0;
-    font-size: 10vw;
-    line-height: 80px;
-    color: #f8feff;
-    text-shadow: 0 10px 4px #97afcb, 0 -2px 6px #cbe3ff;
+  display: block;
+  margin: 8px 0 14px;
+  line-height: 1; /* bättre på mobil */
+  color: #f8feff;
+  text-shadow: 0 10px 4px #97afcb, 0 -2px 6px #cbe3ff;
 }
 
+/* LOGGASTORLEK – skopa bort globala 10vw och styr per sida */
+body.home h1 span {
+  font-size: 10vw;
+}
+body.subpage h1 span {
+  font-size: 2.6rem;
+} /* mindre logga på undersidor */
+body.subpage h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #202020;
+  margin: 0 0 16px;
+}
+
+/* Länkbar logga utan ful-länkstil */
+header h1 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:focus-visible {
+  outline: 3px solid #7ba8d5;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+.backlink a {
+  padding: 10px 14px;
+} /* större tryckyta */
+
+/* Card-nav på startsidan */
+.card-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+  padding: 0 8px;
+}
+.card {
+  flex: 1 1 220px;
+  max-width: 260px;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+  color: #202020;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  color: #004080;
+}
+.card.external::after {
+  content: "↗";
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 1rem;
+  color: #004080;
+  font-weight: bold;
+}
+
+/* Innehållskort på undersidor */
+.about {
+  background: #f4f8ff80;
+  backdrop-filter: blur(2px);
+  border-radius: 16px;
+  padding: 24px 20px;
+  margin: 20px auto; /* centrera hela containern */
+  max-width: 720px; /* breddbegränsning */
+  text-align: left; /* standard = vänster för text */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.about h2 {
+  text-align: center; /* rubriker centreras */
+  margin-top: 0;
+}
+
+.about p {
+  margin: 0 0 16px;
+  line-height: 1.6;
+}
+
+/* ====== Sektioner i Om oss ====== */
+
+/* Jämn luft ovan/under varje sektion */
+.about section {
+  padding: 24px 0;
+  border-bottom: 1px solid #e0e9f7;
+}
+.about section:first-child {
+  margin-top: 4px;
+} /* liten buffert överst */
+.about section:last-child {
+  border-bottom: none;
+  padding-bottom: 32px; /* extra luft längst ner */
+}
+
+/* Vår historia */
+.history p {
+  line-height: 1.6;
+  margin: 0 0 14px;
+}
+
+/* Vision */
+.vision p {
+  font-style: italic;
+  font-size: 1.05rem;
+  color: #333;
+  margin: 0;
+  text-align: center;
+}
+
+/* Vad vi gör */
+.what-we-do ul {
+  margin: 0 0 14px;
+}
+.what-we-do li {
+  margin: 8px 0;
+}
+.what-we-do p {
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+/* Värderingar */
+.values .pill-list {
+  justify-content: center; /* centrera värderings-pillarna */
+}
+.values .pill {
+  background: #ffffff;
+  border: 1px solid #cbe3ff;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: background 0.2s ease;
+}
+.values .pill:hover {
+  background: #e6f0ff;
+}
+
+/* Kontakt */
+.contact p {
+  text-align: center;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+/* Listor */
+.feature-list,
+.pill-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+}
+.feature-list li {
+  margin: 8px 0;
+}
+.pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.pill-list li {
+  background: #fff;
+  border: 1px solid #e0e9f7;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+/* Länkar i text */
+.inline-link {
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid #cbe3ff;
+}
+.inline-link:hover {
+  color: #004080;
+  border-bottom-color: #97afcb;
+}
+.inline-link.external::after {
+  content: "↗";
+  margin-left: 6px;
+  font-size: 0.9rem;
+  color: #004080;
+  font-weight: bold;
+}
+
+/* Back-länk */
+.backlink {
+  text-align: center;
+  margin: 32px 0;
+}
+.backlink a {
+  font-weight: 600;
+  color: #004080;
+  text-decoration: none;
+  border-bottom: 2px solid #cbe3ff;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.backlink a:hover {
+  background: #e6f0ff;
+  color: #202020;
+}
+
+/* Större skärm – öka container och kort */
+@media (min-width: 960px) {
+  .container {
+    max-width: 1000px;
+    padding: 0 20px;
+  }
+  .card {
+    flex: 1 1 240px;
+    max-width: 280px;
+  }
+}
